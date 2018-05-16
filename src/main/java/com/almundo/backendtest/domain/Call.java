@@ -1,5 +1,7 @@
 package com.almundo.backendtest.domain;
 
+import com.almundo.backendtest.util.RandomNumber;
+
 /**
  * @author hollman_castro
  */
@@ -18,6 +20,7 @@ public class Call {
 
     public Call(String from) {
         this.from = from;
+        this.duration = RandomNumber.getRandomDuration(5, 10);
     }
 
     public String getFrom() {
