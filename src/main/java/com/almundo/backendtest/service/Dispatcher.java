@@ -76,7 +76,8 @@ public class Dispatcher {
             while (!assigned && employeeIterator.hasNext()) {
                 Employee employee = employeeIterator.next();
                 if (employee.isAvailable()) {
-                    employee.attendCall(call);
+                    employee.attendCall();
+                    call.setProcessed(true);
                     assigned = true;
                     logger.debug("The employee {} will attend the call", employee);
                     threadPoolTaskScheduler.schedule(() -> endCall(employee),

@@ -14,7 +14,7 @@ public class Employee {
         this.available= true;
     }
 
-    public void attendCall(Call call){
+    public void attendCall(){
         setAvailable(false);
     }
 

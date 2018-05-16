@@ -6,6 +6,7 @@ package com.almundo.backendtest.domain;
 public class Call {
     private String from;
     private int duration;
+    private boolean processed;
 
     public Call() {
     }
@@ -33,5 +34,13 @@ public class Call {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public boolean isProcessed() {
+        return processed;
+    }
+
+    public void setProcessed(boolean processed) {
+        this.processed = processed;
     }
 }
