@@ -3,7 +3,26 @@
 
 ## (unreleased)
 
+### Changes
+
+* Changed gitignore rules. [Hollman_Castro]
+
+### Fix
+
+* Added mvn wrapper binaries files. [Hollman_Castro]
+
+### Other
+
+* Merge branch 'release/1.0.0' [Hollman_Castro]
+
+
+## 1.0.0 (2018-05-16)
+
 ### New
+
+* Added changelog info. [Hollman_Castro]
+
+* Changed version from 0.0.1-SNAPSHOT to 1.0.0. [Hollman_Castro]
 
 * Added DispacherTest. [Hollman_Castro]
 
