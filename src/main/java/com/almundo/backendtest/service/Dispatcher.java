@@ -22,13 +22,13 @@ import java.util.*;
  */
 @Service
 public class Dispatcher {
-    private final Map<EmployeeType, List<Employee>> employeeMap = new Hashtable<>();
     @Value("${application.number-of-operadores}")
     private int operadores;
     @Value("${application.number-of-directores}")
     private int directores;
     @Value("${application.number-of-supervisores}")
     private int supervisores;
+    private final Map<EmployeeType, List<Employee>> employeeMap = new Hashtable<>();
     private final EmployeeFactory employeeFactory;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private ThreadPoolTaskScheduler threadPoolTaskScheduler;
@@ -77,10 +77,9 @@ public class Dispatcher {
                 Employee employee = employeeIterator.next();
                 if (employee.isAvailable()) {
                     employee.attendCall();
-                    call.setProcessed(true);
                     assigned = true;
                     logger.debug("The employee {} will attend the call", employee);
-                    threadPoolTaskScheduler.schedule(() -> endCall(employee),
+                    threadPoolTaskScheduler.schedule(() -> endCall(employee, call),
                             Date.from(LocalDateTime.now().plusSeconds(call.getDuration())
                             .atZone(ZoneId.systemDefault()).toInstant()));
                 }
@@ -93,8 +92,9 @@ public class Dispatcher {
         }
     }
 
-    public void endCall(Employee employee) {
+    private void endCall(Employee employee, Call call) {
         employee.endCall();
+        call.setProcessed(true);
         logger.debug("Employee {} has ended the call", employee);
     }
 }
